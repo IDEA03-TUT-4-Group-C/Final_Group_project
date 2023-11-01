@@ -6,27 +6,27 @@ let CanvasSize = 600;
 let Size = 1;
 
 function setup() {
-
   background(220);
-
-
 }
 
 function draw() {
   createCanvas(CanvasSize, CanvasSize);
   colorMode(RGB);
-  background(255);
-  GenerateMap(10,6,Size)
+  background(255,20,20);
+  GenerateMap(10,4,Size)
   GeneratePacMan(400*Size, 400*Size,Size);
   GenerateTrees(100*Size,300*Size,Size)
   Generateghost(200*Size,300*Size,Size)
+  drawCreeper(50*Size,50*Size,Size)
   Respond();
  
 
 
 }
+
+
 function GenerateMap(NumOfHorizontalRoad,NumOfVerticalRoad,Size){
-  //RoadGenerate(20,0,2,60,1);
+//to calculate the gap diatence between roads
   let IntervalHeight = 600 / NumOfHorizontalRoad * Size;
   let IntervalWidth = 600/ NumOfVerticalRoad * Size;
   if( IsmapGenerate == 0){
@@ -50,10 +50,8 @@ function GenerateMap(NumOfHorizontalRoad,NumOfVerticalRoad,Size){
     GenerateRoad(ArrRoadX[i]*Size,0,Size,600,0);
     
   }
-
   // GenerateRoad(0,ArrRoadY,Size,600,1);
   // GenerateRoad(ArrRoadX,0,Size,600,0);
-
 }
 
 function GenerateRoad(Xpos,Ypos,Size,Roadlength,RoadDirection){
@@ -73,8 +71,8 @@ if(RoadDirection == 0){
 if(RoadDirection == 1){
   rect(Xpos,Ypos,Roadlength,RoadWidth);
 }
-
 }
+
 // for draw pacman
 function GeneratePacMan(x, y, size) {
   let startAngle = PI / 6;
@@ -118,6 +116,44 @@ function Generateghost(x, y, size){
   fill(0);
   ellipse(x - size*5, y - size*5, size*5, size*5);
   ellipse(x + size*5, y - size*5, size*5, size*5);
+}
+
+//creeper face
+function drawCreeper(xPos, yPos, size){
+  //strokeWeight(1)
+  noStroke()
+  
+  let eyeWidth = 15, eyeHeight = 15 
+  
+  let maxXDist = CanvasSize - xPos;     //available x-distance 
+  let maxYDist = CanvasSize - yPos;     //available y-distance 
+  let maxXSize = (maxXDist)/(3*eyeWidth)-0.1
+  let maxYSize = (maxYDist)/(3*eyeHeight)-0.1
+  if (size > maxXSize || size > maxYSize){
+    if(maxYSize>maxXSize){
+      size = maxXSize
+    }else{
+      size = maxYSize
+    }
+  }
+
+  let eyeSize = eyeWidth*size
+  let reye_X = xPos+(2*eyeSize)
+
+  //left eye
+  rect(xPos, yPos, eyeWidth*size, eyeHeight*size)
+
+  //right eye
+  rect(reye_X, yPos, eyeWidth*size, eyeHeight*size)
+
+  //LS mouth
+  rect(xPos+(0.5*eyeSize),yPos+(1.5*eyeSize),0.5*eyeSize,1.5*eyeSize)
+
+  //centre nose and mouth
+  rect(xPos+eyeSize,yPos+eyeSize,eyeSize,1.5*eyeSize)
+
+  //RS mouth
+  rect(xPos+(2*eyeSize),yPos+(1.5*eyeSize),0.5*eyeSize,1.5*eyeSize)
 }
 
 

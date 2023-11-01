@@ -38,8 +38,8 @@ This repository is for our final project
 <th>changed by</th>
 </tr>
 <tr>
-<th>V.1.1031.3</th>
-<th>10/31</th>
+<th>V.1.1101.1</th>
+<th>11/01</th>
 <th>JoeyWang</th>
 </tr>
 </table>
