@@ -34,7 +34,7 @@ function draw() {
   background(255,255,20);
   GenerateMap(6,8,Size)
   GeneratePacMan();
-  GenerateTrees(10)
+  GenerateTrees(15)
   Generateghost(200*Size,300*Size,Size)
   drawCreeper(50*Size,50*Size,Size)
   //DrawTrees(200,200,1)
