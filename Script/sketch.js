@@ -26,7 +26,6 @@ let eyeWidth = 25;
 let eyeHeight = 25; 
 let Timecount = 0;
 // to control Size change
-
 function setup() {
   background(220);
 }
@@ -42,6 +41,7 @@ function draw() {
   GenerateTrees(20)
   Generateghost(200*Size,300*Size,Size)
   //DrawTrees(200,200,1)
+  Timecount += 0.005
   Respond();
 }
 
@@ -272,14 +272,14 @@ for(let i = 0;i<TreeNumbers+1;i++){
   // console.log(TreeY)
 //for draw a single trees
 function DrawTrees(x,y,size,InnerNumber) {
-    let tree = new Tree(x,y,size,0,255,0)
+    let tree = new Tree(x,y,size*(2*noise(Timecount)),0,255,0)
      tree.draw();
     if(InnerNumber == 2 || InnerNumber ==3){
-    let tree2 = new Tree(x,y,size-0.5,0,0,255)
+    let tree2 = new Tree(x,y,(size-0.5)*(2*noise(Timecount+1)),0,0,255)
     tree2.draw();
     }
     if(InnerNumber ==3){
-    let tree3 = new Tree(x,y,size-1,255,0,0)
+    let tree3 = new Tree(x,y,(size-1)*(2*noise(Timecount+3)),255,0,0)
     tree3.draw();
     }
 }
