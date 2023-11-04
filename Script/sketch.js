@@ -22,6 +22,8 @@ let PacmanYpos =0;
 let PacmanXpos = 0;
 let GhostXpos = 0;
 let GhostYpos = 0;
+let eyeWidth = 25;
+let eyeHeight = 25; 
 
 function setup() {
   background(220);
@@ -32,28 +34,27 @@ function draw() {
   createCanvas(CanvasSize, CanvasSize);
   colorMode(RGB);
   background(255,255,20);
+  drawCreeper(0*Size,300*Size,Size)
   GenerateMap(6,8,Size)
   GeneratePacMan();
-  GenerateTrees(15)
+  GenerateTrees(20)
   Generateghost(200*Size,300*Size,Size)
-  drawCreeper(50*Size,50*Size,Size)
   //DrawTrees(200,200,1)
-
   Respond();
 }
 
-
+// to generate the road map
 function GenerateMap(NumOfHorizontalRoad,NumOfVerticalRoad,Size){
 //to calculate the gap diatence between each roads
   let IntervalHeight = 600 / NumOfHorizontalRoad * Size;
   let IntervalWidth = 600/ NumOfVerticalRoad * Size;
   if( IsmapGenerate == 0){
     for (let i = 0; i < NumOfHorizontalRoad; i++) {
-      ArrRoadY[i] = Math.floor(IntervalHeight*i +random(10*Size,IntervalHeight));
+      ArrRoadY[i] = Math.floor(IntervalHeight*i +random(10*Size,IntervalHeight-10*Size));
       ArrRoadMarkTypeY[i] = Math.trunc(random(1,3))
     }
     for (let i = 0; i < NumOfVerticalRoad; i++) {
-      ArrRoadX[i] = Math.floor(IntervalWidth*i +random(10*Size,IntervalWidth));
+      ArrRoadX[i] = Math.floor(IntervalWidth*i +random(10*Size,IntervalWidth-10*Size));
       ArrRoadMarkTypeX[i] = Math.trunc(random(1,3))
     }
     IsmapGenerate = 1
@@ -88,6 +89,7 @@ function GenerateMap(NumOfHorizontalRoad,NumOfVerticalRoad,Size){
   // GenerateRoad(ArrRoadX,0,Size,600,0);
 }
 
+//to draw a road
 function GenerateRoad(Xpos,Ypos,Size,Roadlength,RoadDirection){
 //for RoadDirection
 // 1 for horizontal position
@@ -162,6 +164,8 @@ function GenerateRoadMark(Xpos,Ypos,Marklength,MarkType,MarkDirection){
     }
    }
 }
+
+// To generate a pacman
 function GeneratePacMan(){
   if(IsPacManGenerate == 0){
     PacmanYpos = ArrRoadY[Math.floor(random(0,NumOfVerticalRoad))]+10*Size;
@@ -300,8 +304,6 @@ function DrawTrees(x,y,size,InnerNumber) {
       circle(x+2*size,y-2*size,3*size)
       circle(x-2*size,y+2*size,3*size)
     }
-
-
 }
 
 //To generate Ghost
@@ -339,10 +341,7 @@ function Drawghost(x, y, size){
 //creeper face
 function drawCreeper(xPos, yPos, size){
   //strokeWeight(1)
-  noStroke()
-  
-  let eyeWidth = 15, eyeHeight = 15 
-  
+  noStroke()  
   let maxXDist = CanvasSize - xPos;     //available x-distance 
   let maxYDist = CanvasSize - yPos;     //available y-distance 
   let maxXSize = (maxXDist)/(3*eyeWidth)-0.1
@@ -354,10 +353,9 @@ function drawCreeper(xPos, yPos, size){
       size = maxYSize
     }
   }
-
   let eyeSize = eyeWidth*size
   let reye_X = xPos+(2*eyeSize)
-
+  fill(0,0,0)
   //left eye
   rect(xPos, yPos, eyeWidth*size, eyeHeight*size)
 
@@ -379,7 +377,6 @@ function drawCreeper(xPos, yPos, size){
 function Respond(){
 let windowHeight = window.innerHeight;
 let windowWidth = window.innerWidth;
-
 //to adjust the size of canvas
 if(windowHeight >= windowWidth){
   CanvasSize = windowWidth;
