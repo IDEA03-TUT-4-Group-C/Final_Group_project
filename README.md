@@ -24,8 +24,8 @@ This repository is for our final project
 <th>changed by</th>
 </tr>
 <tr>
-<th>V.1.1.0</th>
-<th>10/31</th>
+<th>V.1.3.0</th>
+<th>11/04</th>
 <th>JoeyWang</th>
 </tr>
 </table>
@@ -39,7 +39,7 @@ This repository is for our final project
 </tr>
 <tr>
 <th>V.1.1104.3</th>
-<th>11/04/</th>
+<th>11/04</th>
 <th>JoeyWang</th>
 </tr>
 </table>
