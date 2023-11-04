@@ -24,6 +24,8 @@ let GhostXpos = 0;
 let GhostYpos = 0;
 let eyeWidth = 25;
 let eyeHeight = 25; 
+let Timecount = 0;
+// to control Size change
 
 function setup() {
   background(220);
@@ -270,39 +272,15 @@ for(let i = 0;i<TreeNumbers+1;i++){
   // console.log(TreeY)
 //for draw a single trees
 function DrawTrees(x,y,size,InnerNumber) {
-    fill(0, 255, 0); // Set the fill color to green
-    circle(x,y,10*size)
-    circle(x,y+5*size,10*size)
-    circle(x,y-5*size,10*size)
-    circle(x+5*size,y,10*size)
-    circle(x-5*size,y,10*size)
-    circle(x+5*size,y+5*size,5*size)
-    circle(x-5*size,y-5*size,5*size)
-    circle(x+5*size,y-5*size,5*size)
-    circle(x-5*size,y+5*size,5*size)
+    let tree = new Tree(x,y,size,0,255,0)
+     tree.draw();
     if(InnerNumber == 2 || InnerNumber ==3){
-      fill(0, 0, 255); // Set the fill color to Blue
-      circle(x,y,8*size)
-      circle(x,y+4*size,8*size)
-      circle(x,y-4*size,8*size)
-      circle(x+4*size,y,8*size)
-      circle(x-4*size,y,8*size)
-      circle(x+3*size,y+3*size,4*size)
-      circle(x-3*size,y-3*size,4*size)
-      circle(x+3*size,y-3*size,4*size)
-      circle(x-3*size,y+3*size,4*size)
+    let tree2 = new Tree(x,y,size-0.5,0,0,255)
+    tree2.draw();
     }
     if(InnerNumber ==3){
-      fill(255, 0, 0); // Set the fill color to Red
-      circle(x,y,5*size)
-      circle(x,y+2*size,5*size)
-      circle(x,y-2*size,5*size)
-      circle(x+2*size,y,5*size)
-      circle(x-2*size,y,5*size)
-      circle(x+2*size,y+2*size,3*size)
-      circle(x-2*size,y-2*size,3*size)
-      circle(x+2*size,y-2*size,3*size)
-      circle(x-2*size,y+2*size,3*size)
+    let tree3 = new Tree(x,y,size-1,255,0,0)
+    tree3.draw();
     }
 }
 
@@ -386,4 +364,27 @@ if(windowWidth >= windowHeight){
 }
 Size = CanvasSize/600
 RoadWidth = 20*Size;
+}
+
+class Tree{
+  constructor(InX,InY,InSize,InRed,InGreen,InBlue){
+    this.x = InX;
+    this.y = InY;
+    this.size = InSize;
+    this.Red = InRed;
+    this.Green = InGreen;
+    this.Blue = InBlue;
+  }
+  draw(){
+    fill(this.Red, this.Green, this.Blue)
+    circle(this.x,this.y,this.size)
+    circle(this.x,this.y+5*this.size,10*this.size)
+    circle(this.x,this.y-5*this.size,10*this.size)
+    circle(this.x+5*this.size,this.y,10*this.size)
+    circle(this.x-5*this.size,this.y,10*this.size)
+    circle(this.x+5*this.size,this.y+5*this.size,5*this.size)
+    circle(this.x-5*this.size,this.y-5*this.size,5*this.size)
+    circle(this.x+5*this.size,this.y-5*this.size,5*this.size)
+    circle(this.x-5*this.size,this.y+5*this.size,5*this.size)
+  }
 }
