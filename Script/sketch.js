@@ -26,6 +26,7 @@ let GhostYpos = 0;
 let eyeWidth = 25;
 let eyeHeight = 25; 
 let Timecount = 0;
+
 // to control Size change
 function setup() {
   background(220);
@@ -332,9 +333,21 @@ function drawCreeper(xPos, yPos, size){
       size = maxYSize
     }
   }
-  let creeper = new CreeperFace(xPos+map(noise(Timecount),0,1,-300*size,300*size),yPos+map(noise(Timecount+100),0,1,-300*size,300*size),size*map(noise(Timecount),0,1,0.5,2))
+  
+  // let creeper1 = new CreeperFace(xPos+map(noise(Timecount),0,1,-300*size,300*size),yPos-100*size+map(noise(Timecount+100),0,1,-300*size,300*size),size*map(noise(Timecount),0,1,0.5,2))
+  // let creeper2 = new CreeperFace(xPos-100*size+map(noise(Timecount+25),0,1,-300*size,300*size),yPos+50*size+map(noise(Timecount+125),0,1,-300*size,300*size),size*map(noise(Timecount+50),0,1,0.5,2))
+  // let creeper3 = new CreeperFace(xPos+100*size+map(noise(Timecount+50),0,1,-300*size,300*size),yPos+50*size+map(noise(Timecount+150),0,1,-300*size,300*size),size*map(noise(Timecount+100),0,1,0.5,2))
+  for (i=0;i<20;i++){
+    let creeper = new CreeperFace(xPos+map(noise(Timecount+i*50),0,1,-400*size,400*size),yPos+map(noise(Timecount+i*100),0,1,-500*size,500*size),size*map(noise(Timecount+i*50),0,1,0.5,2));
+    fill(256*noise(Timecount+i*20),256*noise(Timecount+i*10),256*noise(Timecount+i*30))
+    creeper.Draw()
+    //creepers.pop(creeper);
+  }
   fill(256*noise(Timecount),256*noise(Timecount+40),256*noise(Timecount+80))
-  creeper.Draw()
+
+  // creeper1.Draw()
+  // creeper2.Draw()
+  // creeper3.Draw()
 }
 
 

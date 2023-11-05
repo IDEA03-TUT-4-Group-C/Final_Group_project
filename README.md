@@ -38,7 +38,7 @@ This repository is for our final project
 <th>changed by</th>
 </tr>
 <tr>
-<th>V.3.1105.1</th>
+<th>V.4.1105.1</th>
 <th>11/05</th>
 <th>JoeyWang</th>
 </tr>
@@ -51,4 +51,4 @@ Inside the Developer Protocal,you can find two different useful document which a
 ```Protocal``` document will explain many things that can make our teamwork more efficient and safe<br>
 
 # Changes
-Use class to optimize the creeperface,Use noise function to randomize the color and the position of creeper face
+More creeper face
