@@ -1,3 +1,4 @@
+
 //public variable
 let IsmapGenerate = 0;
 let IsTreeGenerate = 0;
@@ -35,7 +36,7 @@ function draw() {
   createCanvas(CanvasSize, CanvasSize);
   colorMode(RGB);
   background(255,255,20);
-  drawCreeper(0*Size,300*Size,Size)
+  drawCreeper(300*Size,300*Size,Size)
   GenerateMap(6,8,Size)
   GeneratePacMan();
   GenerateTrees(20)
@@ -331,23 +332,9 @@ function drawCreeper(xPos, yPos, size){
       size = maxYSize
     }
   }
-  let eyeSize = eyeWidth*size
-  let reye_X = xPos+(2*eyeSize)
-  fill(0,0,0)
-  //left eye
-  rect(xPos, yPos, eyeWidth*size, eyeHeight*size)
-
-  //right eye
-  rect(reye_X, yPos, eyeWidth*size, eyeHeight*size)
-
-  //LS mouth
-  rect(xPos+(0.5*eyeSize),yPos+(1.5*eyeSize),0.5*eyeSize,1.5*eyeSize)
-
-  //centre nose and mouth
-  rect(xPos+eyeSize,yPos+eyeSize,eyeSize,1.5*eyeSize)
-
-  //RS mouth
-  rect(xPos+(2*eyeSize),yPos+(1.5*eyeSize),0.5*eyeSize,1.5*eyeSize)
+  let creeper = new CreeperFace(xPos+map(noise(Timecount),0,1,-300*size,300*size),yPos+map(noise(Timecount+100),0,1,-300*size,300*size),size*map(noise(Timecount),0,1,0.5,2))
+  fill(256*noise(Timecount),256*noise(Timecount+40),256*noise(Timecount+80))
+  creeper.Draw()
 }
 
 
@@ -387,4 +374,29 @@ class Tree{
     circle(this.x+5*this.size,this.y-5*this.size,5*this.size)
     circle(this.x-5*this.size,this.y+5*this.size,5*this.size)
   }
+}
+
+class CreeperFace{
+  constructor(InX,InY,InSize){
+    this.xPos = InX;
+    this.yPos = InY;
+    this.size = InSize
+}
+Draw(){
+      //left eye
+      rect(this.xPos, this.yPos, 25*this.size, 25*this.size)
+
+      //right eye
+      rect(this.xPos+(2*25*this.size), this.yPos, 25*this.size, 25*this.size)
+    
+      //LS mouth
+      rect(this.xPos+(0.5*25*this.size),this.yPos+(1.5*25*this.size),0.5*25*this.size,1.5*25*this.size)
+    
+      //centre nose and mouth
+      rect(this.xPos+25*this.size,this.yPos+25*this.size,25*this.size,1.5*25*this.size)
+    
+      //RS mouth
+      rect(this.xPos+(2*25*this.size),this.yPos+(1.5*25*this.size),0.5*25*this.size,1.5*25*this.size)
+    
+}
 }
