@@ -44,6 +44,9 @@ This repository is for our final project
 </tr>
 </table>
 
+# Submission
+If you need to see my personal section, switch the branch to Joey_Indivisual in this branch contains the iterations of my personal animations as well as the final versions
+
 # Important Notice
 Please check all the files inside the ```Developer Protocal``` folder before your first time do any changes to this project<br>
 Inside the Developer Protocal,you can find two different useful document which are SRS document and Protocal document<br>
@@ -52,3 +55,4 @@ Inside the Developer Protocal,you can find two different useful document which a
 
 # Changes
 More creeper face
+
