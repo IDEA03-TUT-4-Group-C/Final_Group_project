@@ -10,8 +10,8 @@ This repository is for our final project
 <th>changed by</th>
 </tr>
 <tr>
-<th>V.1.0.0</th>
-<th>10/09</th>
+<th>V.1.1.0</th>
+<th>11/06</th>
 <th>JoeyWang</th>
 </tr>
 </table>
